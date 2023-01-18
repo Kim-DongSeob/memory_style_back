@@ -17,13 +17,23 @@ public class BoardController {
     @Autowired
     public BoardService boardService;
 
+    @PostMapping("/create-board")
+    public void createBoard(@RequestBody Board board) {
+        boardService.createBoard(board);
+    }
+
+    @PostMapping("/delete-board")
+    public void deleteBoard(@RequestBody Board board) {
+        boardService.deleteById(board.getId());
+    }
+
     @PostMapping("/find-all-boards")
     public List<Board> findAll() {
         return boardService.findAll();
     }
 
-    @PostMapping("/create-board")
-    public void createBoard(@RequestBody Board board) {
-        boardService.createBoard(board);
+    @PostMapping("/find-board")
+    public Board findById(String id) {
+        return boardService.findById(id);
     }
 }

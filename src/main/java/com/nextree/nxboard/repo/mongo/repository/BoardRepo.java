@@ -6,9 +6,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface BoardRepo extends MongoRepository<BoardDoc, Long> {
+public interface BoardRepo extends MongoRepository<BoardDoc, String> {
   //
   List<BoardDoc> findAll();
-
-//  Optional<BoardDoc> retrieveById(Long id);
+  Optional<BoardDoc> findById(String id);
 }

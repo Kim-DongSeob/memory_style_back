@@ -2,6 +2,7 @@ package com.nextree.nxboard.service;
 
 import com.nextree.nxboard.domian.entity.Board;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
+import com.nextree.nxboard.util.Util;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,14 +19,22 @@ public class BoardService {
   public List<Board> findAll() {
     return store.retrieveAll();
   }
+  public Board findById(String id) {
+    return store.retrieveById(id);
+  }
+
+  public void deleteById(String id) {
+    store.deleteById(id);
+  }
 
   public void createBoard(Board board) {
-    board.setId(board.getId());
-    board.setTitle(board.getTitle());
-    board.setContent(board.getContent());
-    board.setRegistrationTime(board.getRegistrationTime());
-    board.setModificationTime(board.getModificationTime());
-    board.setViewCount(board.getViewCount());
+    board.setId(Util.genId());
+//    board.setTitle(board.getTitle());
+//    board.setContent(board.getContent());
+    board.setRegistrationTime(Util.genDate());
+    board.setModificationTime(Util.genDate());
+    board.setLikeCount(0);
+    board.setViewCount(0);
     store.create(board);
   }
 }

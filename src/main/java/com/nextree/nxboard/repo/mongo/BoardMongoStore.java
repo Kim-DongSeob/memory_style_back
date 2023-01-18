@@ -17,16 +17,6 @@ public class BoardMongoStore implements BoardStore {
     this.boardRepo = boardRepo;
   }
 
-//  @Override
-//  public void update(Board board) {
-//
-//  }
-//
-//  @Override
-//  public void deleteById(Board board) {
-//
-//  }
-
   @Override
   public void create(Board board) {
     BoardDoc boardDoc = new BoardDoc(board);
@@ -34,7 +24,17 @@ public class BoardMongoStore implements BoardStore {
   }
 
   @Override
+  public void deleteById(String id) {
+    boardRepo.deleteById(id);
+  }
+
+  @Override
   public List<Board> retrieveAll() {
     return BoardDoc.toEntities(boardRepo.findAll());
+  }
+
+  @Override
+  public Board retrieveById(String id) {
+    return boardRepo.findById(id).orElseThrow().toEntity();
   }
 }

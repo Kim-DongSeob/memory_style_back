@@ -9,5 +9,8 @@ public interface BoardStore {
 //  void deleteById(Board board);
 
   void create(Board board);
+
+  void deleteById(String id);
   List<Board> retrieveAll();
+  Board retrieveById(String id);
 }

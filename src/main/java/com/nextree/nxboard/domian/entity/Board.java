@@ -12,5 +12,6 @@ public class Board {
   private String content;
   private String registrationTime;
   private String modificationTime;
+  private int likeCount;
   private int viewCount;
 }
