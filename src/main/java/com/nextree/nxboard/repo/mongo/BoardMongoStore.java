@@ -4,10 +4,12 @@ import com.nextree.nxboard.domian.entity.Board;
 import com.nextree.nxboard.repo.BoardStore;
 import com.nextree.nxboard.repo.mongo.doc.BoardDoc;
 import com.nextree.nxboard.repo.mongo.repository.BoardRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Slf4j
 @Repository
 public class BoardMongoStore implements BoardStore {
   //
