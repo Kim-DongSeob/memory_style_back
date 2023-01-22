@@ -2,6 +2,7 @@ package com.nextree.nxboard.controller;
 
 import com.nextree.nxboard.domian.entity.Board;
 import com.nextree.nxboard.domian.sdo.BoardCdo;
+import com.nextree.nxboard.domian.vo.BoardId;
 import com.nextree.nxboard.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,8 @@ public class BoardController {
     }
 
     @PostMapping("/find/query")
-    public Board findById(@RequestBody String id) {
-        return boardService.findById(id);
+    public Board findById(@RequestBody BoardId boardId) {
+        log.info("id >> : {}", boardId);
+        return boardService.findById(boardId.getBoardId());
     }
 }
