@@ -22,8 +22,12 @@ public class BoardService {
   public List<Board> findAll() {
     return store.retrieveAll();
   }
+
   public Board findById(String id) {
-    return store.retrieveById(id);
+    Board board = store.retrieveById(id);
+    board.setViewCount(board.getViewCount() + 1);
+    store.increaseViewCount(board);
+    return board;
   }
 
   public void deleteById(String id) {
@@ -31,8 +35,10 @@ public class BoardService {
   }
 
   public void createBoard(BoardCdo boardCdo) {
+//    User user = boardCdo.getUser();
     Board board = new Board();
     board.setId(Util.genId());
+//    board.setUserName(user.getUserName());
     board.setTitle(boardCdo.getTitle());
     board.setContent(boardCdo.getContent());
     board.setRegistrationTime(Util.genDate());

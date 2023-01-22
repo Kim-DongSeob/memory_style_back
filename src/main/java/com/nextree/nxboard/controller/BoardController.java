@@ -37,7 +37,7 @@ public class BoardController {
     }
 
     @PostMapping("/find/query")
-    public Board findById(String id) {
+    public Board findById(@RequestBody String id) {
         return boardService.findById(id);
     }
 }

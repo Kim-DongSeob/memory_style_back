@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Repository
@@ -37,6 +38,12 @@ public class BoardMongoStore implements BoardStore {
 
   @Override
   public Board retrieveById(String id) {
-    return boardRepo.findById(id).orElseThrow().toEntity();
+    Optional<BoardDoc> boardDoc = boardRepo.findById(id);
+    return boardDoc.orElseThrow(null).toEntity();
+  }
+
+  public void increaseViewCount(Board board) {
+    BoardDoc boardDoc = new BoardDoc(board);
+    boardRepo.save(boardDoc);
   }
 }

@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class BoardCdo {
-  private User user;
+  private String userId;
   private String title;
   private String content;
 }
