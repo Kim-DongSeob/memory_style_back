@@ -1,8 +1,7 @@
 package com.nextree.nxboard.service;
 
+import com.nextree.nxboard.domian.entity.User;
 import com.nextree.nxboard.domian.sdo.BookmarkCdo;
-import com.nextree.nxboard.domian.vo.BoardId;
-import com.nextree.nxboard.domian.vo.UserMetadata;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +15,11 @@ public class UserService {
   }
 
   public void registerBookmark(BookmarkCdo bookmarkCdo) {
-    store.registerBookmark(bookmarkCdo);
+    String boardId = bookmarkCdo.getBoardId();
+    User user = store.retrieveById(bookmarkCdo.getUserId());
+
+//     리스트에 어케 넣지??
+//    user.setBookmarks(boardId);
+//    store.registerBookmark(boardId);
   }
 }

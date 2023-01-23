@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserFlowResource {
 
   @Autowired
-  private final UserService userService;
-
-  public UserFlowResource(UserService userService) {
-    this.userService = userService;
-  }
+  private UserService userService;
 
   @PostMapping("/register/bookmark/command")
   public void registerBookmark(@RequestBody RegisterBookmarkCommand command) {

@@ -15,4 +15,5 @@ public class UserSeekResource {
   public UserSeekResource(UserService userService) {
     this.userService = userService;
   }
+
 }

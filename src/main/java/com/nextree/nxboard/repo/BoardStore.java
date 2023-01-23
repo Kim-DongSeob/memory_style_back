@@ -1,7 +1,6 @@
 package com.nextree.nxboard.repo;
 
 import com.nextree.nxboard.domian.entity.Board;
-import com.nextree.nxboard.domian.vo.BoardId;
 
 import java.util.List;
 
