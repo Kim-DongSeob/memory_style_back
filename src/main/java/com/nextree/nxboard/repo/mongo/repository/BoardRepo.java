@@ -10,4 +10,5 @@ public interface BoardRepo extends MongoRepository<BoardDoc, String> {
   //
   List<BoardDoc> findAll();
   Optional<BoardDoc> findById(String id);
+
 }

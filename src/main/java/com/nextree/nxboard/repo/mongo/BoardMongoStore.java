@@ -42,8 +42,11 @@ public class BoardMongoStore implements BoardStore {
     return boardDoc.orElseThrow(null).toEntity();
   }
 
+  @Override
   public void increaseViewCount(Board board) {
     BoardDoc boardDoc = new BoardDoc(board);
     boardRepo.save(boardDoc);
   }
+
+
 }

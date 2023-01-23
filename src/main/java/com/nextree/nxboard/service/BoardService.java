@@ -1,7 +1,9 @@
 package com.nextree.nxboard.service;
 
 import com.nextree.nxboard.domian.entity.Board;
+import com.nextree.nxboard.domian.entity.User;
 import com.nextree.nxboard.domian.sdo.BoardCdo;
+import com.nextree.nxboard.domian.vo.BoardId;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
 import com.nextree.nxboard.util.Util;
 import lombok.extern.slf4j.Slf4j;

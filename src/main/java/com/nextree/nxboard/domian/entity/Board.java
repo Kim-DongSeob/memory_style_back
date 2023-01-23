@@ -1,14 +1,13 @@
 package com.nextree.nxboard.domian.entity;
 
-import com.nextree.nxboard.domian.vo.User;
+import com.nextree.nxboard.domian.vo.Entity;
 import lombok.*;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Board {
+public class Board extends Entity {
   //
-  private String id;
   private String userId;
   private String title;
   private String content;

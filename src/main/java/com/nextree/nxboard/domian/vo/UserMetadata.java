@@ -4,16 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class UserMetadata {
   //
   String userId;
   String userName;
-  List<Follow> followers;
-  List<Follow> following;
-  String signUpTime;
+  String password;
 }
