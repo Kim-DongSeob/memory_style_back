@@ -1,6 +1,6 @@
 package com.nextree.nxboard.facade.user.command.command;
 
-import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
+import com.nextree.nxboard.domian.user.sdo.UserCdo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,9 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class RegisterBookmarkCommand {
+@AllArgsConstructor
+public class RegisterUserCommand {
   //
-  private BookmarkCdo bookmarkCdo;
+  private UserCdo userCdo;
 }

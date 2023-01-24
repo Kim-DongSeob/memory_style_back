@@ -1,6 +1,5 @@
 package com.nextree.nxboard.domian.user.sdo;
 
-import com.nextree.nxboard.domian.user.vo.UserMetadata;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserCdo {
-  UserMetadata userMetadata;
-
+  private String userId;
+  private String userName;
+  private String password;
 }

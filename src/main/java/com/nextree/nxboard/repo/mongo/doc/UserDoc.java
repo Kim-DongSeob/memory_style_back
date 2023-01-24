@@ -1,8 +1,8 @@
 package com.nextree.nxboard.repo.mongo.doc;
 
 import com.nextree.nxboard.domian.user.entity.User;
-import com.nextree.nxboard.domian.board.vo.BoardId;
 import com.nextree.nxboard.domian.user.vo.Follow;
+import com.nextree.nxboard.domian.user.vo.UserMetadata;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,14 +17,15 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public class UserDoc {
-//  String id;
+  String id;
   String userId;
   String userName;
   String password;
+  String signUpTime;
+//  UserMetadata userMetadata;
   List<Follow> followers;
   List<Follow> following;
-  String signUpTime;
-  List<BoardId> bookmarks;
+  List<String> bookmarks;
 
   public UserDoc(User user) {
     super();

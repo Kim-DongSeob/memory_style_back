@@ -6,5 +6,7 @@ public interface UserStore {
   //
   void registerBookmark(User user);
 
-  User retrieveById(String userId);
+  User retrieveByUserId(String userId);
+
+  void registerUser(User user);
 }
