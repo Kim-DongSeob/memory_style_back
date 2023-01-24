@@ -19,14 +19,14 @@ public class UserMongoStore implements UserStore {
   }
 
   @Override
-  public void registerBookmark(String boardId) {
-    UserDoc userDoc = new UserDoc();
-    userRepo.registerBookmark(boardId);
+  public void registerBookmark(User user) {
+    UserDoc userDoc = new UserDoc(user);
+    userRepo.save(userDoc);
   }
 
   @Override
   public User retrieveById(String userId) {
-    Optional<UserDoc> userDoc = userRepo.findById(userId);
+    Optional<UserDoc> userDoc = userRepo.findByUserId(userId);
     return userDoc.orElseThrow(null).toEntity();
   }
 }

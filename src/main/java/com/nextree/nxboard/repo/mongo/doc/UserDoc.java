@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public class UserDoc {
+//  String id;
   String userId;
   String userName;
   String password;

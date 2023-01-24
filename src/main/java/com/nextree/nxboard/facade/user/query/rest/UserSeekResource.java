@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserSeekResource {
 
   @Autowired
-  private final UserService userService;
+  public UserService userService;
 
   public UserSeekResource(UserService userService) {
     this.userService = userService;

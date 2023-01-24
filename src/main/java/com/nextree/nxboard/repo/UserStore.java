@@ -4,7 +4,7 @@ import com.nextree.nxboard.domian.entity.User;
 
 public interface UserStore {
   //
-  void registerBookmark(String boardId);
+  void registerBookmark(User user);
 
   User retrieveById(String userId);
 }

@@ -1,7 +1,6 @@
 package com.nextree.nxboard.facade.user.command.rest;
 
 import com.nextree.nxboard.domian.sdo.BookmarkCdo;
-import com.nextree.nxboard.domian.vo.BoardId;
 import com.nextree.nxboard.facade.user.command.command.RegisterBookmarkCommand;
 import com.nextree.nxboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserFlowResource {
 
   @Autowired
-  private UserService userService;
+  public UserService userService;
 
   @PostMapping("/register/bookmark/command")
   public void registerBookmark(@RequestBody RegisterBookmarkCommand command) {
