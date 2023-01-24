@@ -1,4 +1,4 @@
-package com.nextree.nxboard.domian.sdo;
+package com.nextree.nxboard.domian.board.sdo;
 
 import lombok.*;
 

@@ -1,6 +1,6 @@
 package com.nextree.nxboard.repo.mongo.doc;
 
-import com.nextree.nxboard.domian.entity.Board;
+import com.nextree.nxboard.domian.board.entity.Board;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.nextree.nxboard.domian.entity;
+package com.nextree.nxboard.domian.board.entity;
 
 import com.nextree.nxboard.domian.vo.Entity;
 import lombok.*;

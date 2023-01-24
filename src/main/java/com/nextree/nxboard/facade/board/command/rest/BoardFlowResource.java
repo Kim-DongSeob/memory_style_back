@@ -1,6 +1,6 @@
 package com.nextree.nxboard.facade.board.command.rest;
 
-import com.nextree.nxboard.domian.sdo.BoardCdo;
+import com.nextree.nxboard.domian.board.sdo.BoardCdo;
 import com.nextree.nxboard.facade.board.command.command.RegisterBoardCommand;
 import com.nextree.nxboard.facade.board.command.command.RemoveBoardCommand;
 import com.nextree.nxboard.service.BoardService;

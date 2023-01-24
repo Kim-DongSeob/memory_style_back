@@ -1,6 +1,6 @@
 package com.nextree.nxboard.facade.board.query.rest;
 
-import com.nextree.nxboard.domian.entity.Board;
+import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.facade.board.query.query.FindBoardQuery;
 import com.nextree.nxboard.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;

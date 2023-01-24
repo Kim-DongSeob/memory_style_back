@@ -1,6 +1,6 @@
 package com.nextree.nxboard.repo.mongo;
 
-import com.nextree.nxboard.domian.entity.Board;
+import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.repo.BoardStore;
 import com.nextree.nxboard.repo.mongo.doc.BoardDoc;
 import com.nextree.nxboard.repo.mongo.repository.BoardRepo;
