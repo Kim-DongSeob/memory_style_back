@@ -1,6 +1,6 @@
 package com.nextree.nxboard.facade.user.command.rest;
 
-import com.nextree.nxboard.domian.sdo.BookmarkCdo;
+import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.facade.user.command.command.RegisterBookmarkCommand;
 import com.nextree.nxboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

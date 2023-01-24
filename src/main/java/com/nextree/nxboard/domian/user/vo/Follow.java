@@ -1,4 +1,4 @@
-package com.nextree.nxboard.domian.vo;
+package com.nextree.nxboard.domian.user.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

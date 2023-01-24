@@ -1,4 +1,4 @@
-package com.nextree.nxboard.domian.sdo;
+package com.nextree.nxboard.domian.user.sdo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

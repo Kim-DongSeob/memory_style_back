@@ -1,7 +1,6 @@
 package com.nextree.nxboard.repo.mongo;
 
-import com.nextree.nxboard.domian.entity.User;
-import com.nextree.nxboard.domian.sdo.BookmarkCdo;
+import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.repo.UserStore;
 import com.nextree.nxboard.repo.mongo.doc.UserDoc;
 import com.nextree.nxboard.repo.mongo.repository.UserRepo;

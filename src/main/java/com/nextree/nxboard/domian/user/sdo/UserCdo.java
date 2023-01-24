@@ -1,6 +1,6 @@
-package com.nextree.nxboard.domian.sdo;
+package com.nextree.nxboard.domian.user.sdo;
 
-import com.nextree.nxboard.domian.vo.UserMetadata;
+import com.nextree.nxboard.domian.user.vo.UserMetadata;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.nextree.nxboard.service;
 
-import com.nextree.nxboard.domian.entity.User;
-import com.nextree.nxboard.domian.sdo.BookmarkCdo;
+import com.nextree.nxboard.domian.user.entity.User;
+import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,8 @@
 package com.nextree.nxboard.repo.mongo.doc;
 
-import com.nextree.nxboard.domian.entity.User;
-import com.nextree.nxboard.domian.entity.User;
-import com.nextree.nxboard.domian.vo.BoardId;
-import com.nextree.nxboard.domian.vo.Follow;
+import com.nextree.nxboard.domian.user.entity.User;
+import com.nextree.nxboard.domian.board.vo.BoardId;
+import com.nextree.nxboard.domian.user.vo.Follow;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
