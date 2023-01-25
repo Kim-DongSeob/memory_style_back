@@ -1,15 +1,19 @@
 package com.nextree.nxboard.facade.board.command.rest;
 
 import com.nextree.nxboard.domian.board.sdo.BoardCdo;
+import com.nextree.nxboard.domian.board.sdo.BoardUdo;
+import com.nextree.nxboard.facade.board.command.command.ModifyBoardCommand;
 import com.nextree.nxboard.facade.board.command.command.RegisterBoardCommand;
 import com.nextree.nxboard.facade.board.command.command.RemoveBoardCommand;
 import com.nextree.nxboard.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/nx-board/board")
 public class BoardFlowResource {
@@ -29,5 +33,11 @@ public class BoardFlowResource {
   public void deleteBoard(@RequestBody RemoveBoardCommand command) {
     String boardId = command.getBoardId();
     boardService.deleteById(boardId);
+  }
+
+  @PostMapping("/modify/command")
+  public void modifyBoard(@RequestBody ModifyBoardCommand command) {
+    BoardUdo boardUdo = command.getBoardUdo();
+    boardService.modifyBoard(boardUdo);
   }
 }

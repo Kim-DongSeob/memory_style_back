@@ -15,4 +15,6 @@ public interface BoardStore {
   Board retrieveById(String id);
 
   void increaseViewCount(Board board);
+
+  void modifyBoard(Board board);
 }

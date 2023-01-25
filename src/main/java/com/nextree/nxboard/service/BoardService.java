@@ -2,12 +2,15 @@ package com.nextree.nxboard.service;
 
 import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.board.sdo.BoardCdo;
+import com.nextree.nxboard.domian.board.sdo.BoardUdo;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
 import com.nextree.nxboard.util.Util;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class BoardService {
   //
@@ -44,5 +47,12 @@ public class BoardService {
     board.setLikeCount(0);
     board.setViewCount(0);
     store.create(board);
+  }
+
+  public void modifyBoard(BoardUdo boardUdo) {
+    Board board = store.retrieveById(boardUdo.getBoardId());
+    board.setTitle(boardUdo.getTitle());
+    board.setContent(boardUdo.getContent());
+    store.modifyBoard(board);
   }
 }

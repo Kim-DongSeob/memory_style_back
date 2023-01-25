@@ -37,7 +37,7 @@ public class BoardMongoStore implements BoardStore {
   @Override
   public Board retrieveById(String id) {
     Optional<BoardDoc> boardDoc = boardRepo.findById(id);
-    return boardDoc.orElseThrow(null).toEntity();
+    return boardDoc.map(BoardDoc::toEntity).orElse(null);
   }
 
   @Override
@@ -46,5 +46,10 @@ public class BoardMongoStore implements BoardStore {
     boardRepo.save(boardDoc);
   }
 
+  @Override
+  public void modifyBoard(Board board) {
+    BoardDoc boardDoc = new BoardDoc(board);
+    boardRepo.save(boardDoc);
+  }
 
 }

@@ -25,13 +25,20 @@ public class UserMongoStore implements UserStore {
 
   @Override
   public User retrieveByUserId(String userId) {
-    Optional<UserDoc> userDoc = userRepo.findByUserId(userId);
-    return userDoc.map(UserDoc::toEntity).orElse(null);
+    UserDoc userDoc = userRepo.findByUserId(userId);
+//    return userDoc.map(UserDoc::toEntity).orElse(null);
+    return userDoc.toEntity();
   }
 
   @Override
   public void registerUser(User user) {
     UserDoc userDoc = new UserDoc(user);
     userRepo.save(userDoc);
+  }
+
+  @Override
+  public User retrieveByUserIdAndPassword(String userId, String password) {
+    UserDoc userDoc = userRepo.findByUserIdAndPassword(userId, password);
+    return userDoc.toEntity();
   }
 }

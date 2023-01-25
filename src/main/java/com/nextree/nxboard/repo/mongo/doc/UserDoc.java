@@ -17,15 +17,15 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public class UserDoc {
-  String id;
-  String userId;
-  String userName;
-  String password;
-  String signUpTime;
-//  UserMetadata userMetadata;
-  List<Follow> followers;
-  List<Follow> following;
-  List<String> bookmarks;
+  private String id;
+  private String userId;
+  private String userName;
+  private String password;
+  private String signUpTime;
+//private UserMetadata userMetadata;
+  private List<Follow> followers;
+  private List<Follow> following;
+  private List<String> bookmarks;
 
   public UserDoc(User user) {
     super();

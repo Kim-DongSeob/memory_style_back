@@ -3,8 +3,6 @@ package com.nextree.nxboard.service;
 import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.domian.user.sdo.UserCdo;
-import com.nextree.nxboard.domian.user.vo.Follow;
-import com.nextree.nxboard.domian.user.vo.UserMetadata;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import com.nextree.nxboard.util.Util;
 import org.springframework.stereotype.Service;
@@ -53,5 +51,9 @@ public class UserService {
     user.setFollowing(Collections.emptyList());
     user.setBookmarks(Collections.emptyList());
     store.registerUser(user);
+  }
+
+  public User findUser(String userId, String password) {
+    return store.retrieveByUserIdAndPassword(userId, password);
   }
 }
