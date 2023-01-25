@@ -6,8 +6,6 @@ import com.nextree.nxboard.repo.mongo.doc.UserDoc;
 import com.nextree.nxboard.repo.mongo.repository.UserRepo;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public class UserMongoStore implements UserStore {
   //
