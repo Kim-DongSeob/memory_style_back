@@ -73,4 +73,8 @@ public class UserService {
   public User findUser(String userId, String password) {
     return store.retrieveByUserIdAndPassword(userId, password);
   }
+
+  public User findByUserId(String userId) {
+    return store.retrieveByUserId(userId);
+  }
 }
