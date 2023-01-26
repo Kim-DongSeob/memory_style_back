@@ -52,4 +52,9 @@ public class BoardMongoStore implements BoardStore {
     boardRepo.save(boardDoc);
   }
 
+  @Override
+  public void saveBoard(Board board) {
+    BoardDoc boardDoc = new BoardDoc(board);
+    boardRepo.save(boardDoc);
+  }
 }

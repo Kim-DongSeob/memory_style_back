@@ -21,7 +21,7 @@ public class BoardDoc {
   private String content;
   private String registrationTime;
   private String modificationTime;
-  private int likeCount;
+  private int bookmarkCount;
   private int viewCount;
 
   public BoardDoc(Board board) {

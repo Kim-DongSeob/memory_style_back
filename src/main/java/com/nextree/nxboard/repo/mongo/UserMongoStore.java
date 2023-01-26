@@ -6,6 +6,8 @@ import com.nextree.nxboard.repo.mongo.doc.UserDoc;
 import com.nextree.nxboard.repo.mongo.repository.UserRepo;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class UserMongoStore implements UserStore {
   //
@@ -22,10 +24,16 @@ public class UserMongoStore implements UserStore {
   }
 
   @Override
+  public void deleteBookmark(User user) {
+    UserDoc userDoc = new UserDoc(user);
+    userRepo.save(userDoc);
+  }
+
+  @Override
   public User retrieveByUserId(String userId) {
-    UserDoc userDoc = userRepo.findByUserId(userId);
-//    return userDoc.map(UserDoc::toEntity).orElse(null);
-    return userDoc.toEntity();
+    Optional<UserDoc> userDoc = userRepo.findByUserId(userId);
+    return userDoc.map(UserDoc::toEntity).orElse(null);
+//    return userDoc.toEntity();
   }
 
   @Override

@@ -6,6 +6,7 @@ import com.nextree.nxboard.facade.board.command.command.ModifyBoardCommand;
 import com.nextree.nxboard.facade.board.command.command.RegisterBoardCommand;
 import com.nextree.nxboard.facade.board.command.command.RemoveBoardCommand;
 import com.nextree.nxboard.service.BoardService;
+import com.nextree.nxboard.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/nx-board/board")
 public class BoardFlowResource {
+
   @Autowired
   public BoardService boardService;
+  public UserService userService;
 
   @PostMapping("/register/command")
   public void createBoard(@RequestBody RegisterBoardCommand command) {
@@ -40,4 +43,11 @@ public class BoardFlowResource {
     BoardUdo boardUdo = command.getBoardUdo();
     boardService.modifyBoard(boardUdo);
   }
+
+//  @PostMapping("/increase/bookmark/command")
+//  public void bookmarkBoard(@RequestBody LikeBoardCommand command) {
+//    Board board = boardService.findById(command.getBoardId());
+//    User user = userService.
+//    board.setLikeCount(board.getLikeCount() + 1);
+//  }
 }

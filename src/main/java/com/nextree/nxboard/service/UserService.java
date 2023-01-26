@@ -1,8 +1,10 @@
 package com.nextree.nxboard.service;
 
+import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.domian.user.sdo.UserCdo;
+import com.nextree.nxboard.repo.mongo.BoardMongoStore;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import com.nextree.nxboard.util.Util;
 import org.springframework.stereotype.Service;
@@ -14,18 +16,35 @@ import java.util.List;
 public class UserService {
   //
   private final UserMongoStore store;
+  private final BoardMongoStore boardStore;
 
-  public UserService(UserMongoStore store) {
+  public UserService(UserMongoStore store, BoardMongoStore boardStore) {
     this.store = store;
+    this.boardStore = boardStore;
   }
 
   public void registerBookmark(BookmarkCdo bookmarkCdo) {
     String userId = bookmarkCdo.getUserId();
+    String boardId = bookmarkCdo.getBoardId();
+
     User user = store.retrieveByUserId(userId);
+    Board board = boardStore.retrieveById(boardId);
     List<String> bookmarks = user.getBookmarks();
-    bookmarks.add(bookmarkCdo.getBoardId());
-    user.setBookmarks(bookmarks);
-    store.registerBookmark(user);
+    if (bookmarks.contains(boardId)) {
+      bookmarks.remove(boardId);
+      user.setBookmarks(bookmarks);
+      store.deleteBookmark(user);
+
+      board.setBookmarkCount(board.getBookmarkCount() - 1);
+      boardStore.saveBoard(board);
+    } else {
+      bookmarks.add(boardId);
+      user.setBookmarks(bookmarks);
+      store.registerBookmark(user);
+
+      board.setBookmarkCount(board.getBookmarkCount() + 1);
+      boardStore.saveBoard(board);
+    }
   }
 
   public void registerUser(UserCdo userCdo) {
@@ -39,8 +58,6 @@ public class UserService {
     String userName = userCdo.getUserName();
     String password = userCdo.getPassword();
     String signUpTime = Util.genDate();
-//    UserMetadata userMetadata = new UserMetadata(userId, userName, password, signUpTime);
-
     User user = new User();
     user.setId(Util.genId());
     user.setUserId(userId);

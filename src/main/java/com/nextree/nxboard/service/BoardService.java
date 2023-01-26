@@ -26,8 +26,10 @@ public class BoardService {
 
   public Board findById(String id) {
     Board board = store.retrieveById(id);
-    board.setViewCount(board.getViewCount() + 1);
-    store.increaseViewCount(board);
+    if (board != null) {
+      board.setViewCount(board.getViewCount() + 1);
+      store.increaseViewCount(board);
+    }
     return board;
   }
 
@@ -44,7 +46,7 @@ public class BoardService {
     board.setContent(boardCdo.getContent());
     board.setRegistrationTime(Util.genDate());
     board.setModificationTime(Util.genDate());
-    board.setLikeCount(0);
+    board.setBookmarkCount(0);
     board.setViewCount(0);
     store.create(board);
   }

@@ -10,6 +10,6 @@ import lombok.Setter;
 public class BookmarkCdo {
   //
   private String userId;
-  private String userName;
+//  private String userName;
   private String boardId;
 }
