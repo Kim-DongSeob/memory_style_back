@@ -4,6 +4,7 @@ import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.domian.user.sdo.UserCdo;
+import com.nextree.nxboard.domian.user.sdo.UserRdo;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import com.nextree.nxboard.util.Util;
@@ -64,6 +65,7 @@ public class UserService {
     user.setUserName(userName);
     user.setPassword(password);
     user.setSignUpTime(signUpTime);
+    user.setDescription("안녕하세요? " + userName + "입니다!");
     user.setFollowers(Collections.emptyList());
     user.setFollowing(Collections.emptyList());
     user.setBookmarks(Collections.emptyList());
@@ -76,5 +78,22 @@ public class UserService {
 
   public User findByUserId(String userId) {
     return store.retrieveByUserId(userId);
+  }
+
+  public UserRdo findById(String id) {
+    User user = store.retrieveById(id);
+    UserRdo userRdo = new UserRdo();
+    if (user == null) {
+      return userRdo;
+    }
+    userRdo.setId(user.getId());
+    userRdo.setUserId(user.getUserId());
+    userRdo.setUserId(user.getUserId());
+    userRdo.setUserName(user.getUserName());
+    userRdo.setDescription(user.getDescription());
+    userRdo.setFollowers(user.getFollowers());
+    userRdo.setFollowing(user.getFollowing());
+    userRdo.setBookmarks(user.getBookmarks());
+    return userRdo;
   }
 }

@@ -22,6 +22,7 @@ public class UserDoc {
   private String userName;
   private String password;
   private String signUpTime;
+  private String description;
 //private UserMetadata userMetadata;
   private List<Follow> followers;
   private List<Follow> following;

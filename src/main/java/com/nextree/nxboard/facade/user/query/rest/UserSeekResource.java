@@ -2,7 +2,9 @@ package com.nextree.nxboard.facade.user.query.rest;
 
 import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.user.entity.User;
+import com.nextree.nxboard.domian.user.sdo.UserRdo;
 import com.nextree.nxboard.facade.user.query.query.FindBookmarksQuery;
+import com.nextree.nxboard.facade.user.query.query.FindLoginUserQuery;
 import com.nextree.nxboard.facade.user.query.query.FindUserQuery;
 import com.nextree.nxboard.service.BoardService;
 import com.nextree.nxboard.service.UserService;
@@ -30,8 +32,8 @@ public class UserSeekResource {
     this.boardService = boardService;
   }
 
-  @PostMapping("/find/query")
-  public User findUser(@RequestBody FindUserQuery query) {
+  @PostMapping("/find/login/query")
+  public User findLoginUser(@RequestBody FindLoginUserQuery query) {
     String userId = query.getUserId();
     String password = query.getPassword();
     User user = userService.findUser(userId, password);
@@ -49,5 +51,12 @@ public class UserSeekResource {
     }
     List<Board> boards = userBookmarks.stream().map(boardId -> boardService.findById(boardId)).collect(Collectors.toList());
     return boards;
+  }
+
+  @PostMapping("/find/user/query")
+  public UserRdo findUser(@RequestBody FindUserQuery query) {
+    String id = query.getId();
+    UserRdo userRdo = userService.findById(id);
+    return userRdo;
   }
 }

@@ -9,5 +9,5 @@ public interface UserRepo extends MongoRepository<UserDoc, String> {
 
   Optional<UserDoc> findByUserId(String userId);
 
-  UserDoc findByUserIdAndPassword(String userId, String password);
+  Optional<UserDoc> findByUserIdAndPassword(String userId, String password);
 }

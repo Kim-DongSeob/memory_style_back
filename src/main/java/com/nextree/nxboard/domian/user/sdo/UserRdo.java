@@ -1,7 +1,6 @@
-package com.nextree.nxboard.domian.user.entity;
+package com.nextree.nxboard.domian.user.sdo;
 
 import com.nextree.nxboard.domian.user.vo.Follow;
-import com.nextree.nxboard.domian.vo.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Entity {
-//  private UserMetadata userMetadata;
+public class UserRdo {
+  private String id;
   private String userId;
   private String userName;
-  private String password;
   private String signUpTime;
   private String description;
   private List<Follow> followers;

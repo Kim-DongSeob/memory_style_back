@@ -10,6 +10,8 @@ public interface UserStore {
 
   User retrieveByUserId(String userId);
 
+  User retrieveById(String id);
+
   void registerUser(User user);
 
   User retrieveByUserIdAndPassword(String userId, String password);
