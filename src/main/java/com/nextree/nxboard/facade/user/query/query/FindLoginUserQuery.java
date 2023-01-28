@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FindLoginUserQuery {
   //
-  private String userId;
+  private String userEmail;
   private String password;
 }

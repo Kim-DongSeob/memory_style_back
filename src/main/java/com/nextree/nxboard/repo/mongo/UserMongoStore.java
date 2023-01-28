@@ -6,7 +6,6 @@ import com.nextree.nxboard.repo.mongo.doc.UserDoc;
 import com.nextree.nxboard.repo.mongo.repository.UserRepo;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Repository
@@ -31,8 +30,8 @@ public class UserMongoStore implements UserStore {
   }
 
   @Override
-  public User retrieveByUserId(String userId) {
-    Optional<UserDoc> userDoc = userRepo.findByUserId(userId);
+  public User retrieveByUserEmail(String userEmail) {
+    Optional<UserDoc> userDoc = userRepo.findByUserEmail(userEmail);
     return userDoc.map(UserDoc::toEntity).orElse(null);
 //    return userDoc.toEntity();
   }
@@ -50,8 +49,8 @@ public class UserMongoStore implements UserStore {
   }
 
   @Override
-  public User retrieveByUserIdAndPassword(String userId, String password) {
-    Optional<UserDoc> userDoc = userRepo.findByUserIdAndPassword(userId, password);
+  public User retrieveByUserEmailAndPassword(String userEmail, String password) {
+    Optional<UserDoc> userDoc = userRepo.findByUserEmailAndPassword(userEmail, password);
     return userDoc.map(UserDoc::toEntity).orElse(null);
   }
 }

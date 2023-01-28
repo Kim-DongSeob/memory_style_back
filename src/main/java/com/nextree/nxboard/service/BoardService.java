@@ -3,7 +3,9 @@ package com.nextree.nxboard.service;
 import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.board.sdo.BoardCdo;
 import com.nextree.nxboard.domian.board.sdo.BoardUdo;
+import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
+import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import com.nextree.nxboard.util.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,11 @@ import java.util.List;
 public class BoardService {
   //
   private final BoardMongoStore store;
+  private final UserMongoStore userStore;
 
-  public BoardService(BoardMongoStore store) {
+  public BoardService(BoardMongoStore store, UserMongoStore userStore) {
     this.store = store;
+    this.userStore = userStore;
   }
 
   public List<Board> findAll() {
@@ -38,10 +42,10 @@ public class BoardService {
   }
 
   public void createBoard(BoardCdo boardCdo) {
-//    User user = boardCdo.getUser();
+    User user = userStore.retrieveById(boardCdo.getUserId());
     Board board = new Board();
     board.setId(Util.genId());
-//    board.setUserName(user.getUserName());
+    board.setUserId(user.getId());
     board.setTitle(boardCdo.getTitle());
     board.setContent(boardCdo.getContent());
     board.setRegistrationTime(Util.genDate());

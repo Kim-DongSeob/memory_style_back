@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class User extends Entity {
 //  private UserMetadata userMetadata;
-  private String userId;
+  private String userEmail;
   private String userName;
   private String password;
   private String signUpTime;

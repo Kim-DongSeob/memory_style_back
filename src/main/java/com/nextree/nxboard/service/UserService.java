@@ -4,7 +4,6 @@ import com.nextree.nxboard.domian.board.entity.Board;
 import com.nextree.nxboard.domian.user.entity.User;
 import com.nextree.nxboard.domian.user.sdo.BookmarkCdo;
 import com.nextree.nxboard.domian.user.sdo.UserCdo;
-import com.nextree.nxboard.domian.user.sdo.UserRdo;
 import com.nextree.nxboard.repo.mongo.BoardMongoStore;
 import com.nextree.nxboard.repo.mongo.UserMongoStore;
 import com.nextree.nxboard.util.Util;
@@ -28,7 +27,7 @@ public class UserService {
     String userId = bookmarkCdo.getUserId();
     String boardId = bookmarkCdo.getBoardId();
 
-    User user = store.retrieveByUserId(userId);
+    User user = store.retrieveById(userId);
     Board board = boardStore.retrieveById(boardId);
     List<String> bookmarks = user.getBookmarks();
     if (bookmarks.contains(boardId)) {
@@ -52,8 +51,8 @@ public class UserService {
     if (userCdo == null) {
       throw new NullPointerException("userCdo : null");
     }
-    String userId = userCdo.getUserId();
-    if (store.retrieveByUserId(userId) != null) {
+    String userEmail = userCdo.getUserEmail();
+    if (store.retrieveByUserEmail(userEmail) != null) {
       throw new NullPointerException("Already existed");
     }
     String userName = userCdo.getUserName();
@@ -61,7 +60,7 @@ public class UserService {
     String signUpTime = Util.genDate();
     User user = new User();
     user.setId(Util.genId());
-    user.setUserId(userId);
+    user.setUserEmail(userEmail);
     user.setUserName(userName);
     user.setPassword(password);
     user.setSignUpTime(signUpTime);
@@ -72,28 +71,15 @@ public class UserService {
     store.registerUser(user);
   }
 
-  public User findUser(String userId, String password) {
-    return store.retrieveByUserIdAndPassword(userId, password);
+  public User findUserToLogin(String userEmail, String password) {
+    return store.retrieveByUserEmailAndPassword(userEmail, password);
   }
 
-  public User findByUserId(String userId) {
-    return store.retrieveByUserId(userId);
-  }
-
-  public UserRdo findById(String id) {
+  public User findById(String id) {
     User user = store.retrieveById(id);
-    UserRdo userRdo = new UserRdo();
     if (user == null) {
-      return userRdo;
+      throw new NullPointerException("No user" + id);
     }
-    userRdo.setId(user.getId());
-    userRdo.setUserId(user.getUserId());
-    userRdo.setUserId(user.getUserId());
-    userRdo.setUserName(user.getUserName());
-    userRdo.setDescription(user.getDescription());
-    userRdo.setFollowers(user.getFollowers());
-    userRdo.setFollowing(user.getFollowing());
-    userRdo.setBookmarks(user.getBookmarks());
-    return userRdo;
+    return user;
   }
 }

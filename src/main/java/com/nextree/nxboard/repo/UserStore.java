@@ -8,11 +8,11 @@ public interface UserStore {
 
   void deleteBookmark(User user);
 
-  User retrieveByUserId(String userId);
+  User retrieveByUserEmail(String userEmail);
 
   User retrieveById(String id);
 
   void registerUser(User user);
 
-  User retrieveByUserIdAndPassword(String userId, String password);
+  User retrieveByUserEmailAndPassword(String userEmail, String password);
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserCdo {
-  private String userId;
+  private String userEmail;
   private String userName;
   private String password;
 }

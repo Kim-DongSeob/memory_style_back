@@ -33,18 +33,26 @@ public class UserSeekResource {
   }
 
   @PostMapping("/find/login/query")
-  public User findLoginUser(@RequestBody FindLoginUserQuery query) {
-    String userId = query.getUserId();
+  public UserRdo findLoginUser(@RequestBody FindLoginUserQuery query) {
+    String userId = query.getUserEmail();
     String password = query.getPassword();
-    User user = userService.findUser(userId, password);
-    user.setPassword(null);
-    return user;
+    User user = userService.findUserToLogin(userId, password);
+    UserRdo userRdo = new UserRdo();
+    userRdo.setId(user.getId());
+    userRdo.setUserEmail(user.getUserEmail());
+    userRdo.setUserName(user.getUserName());
+    userRdo.setSignUpTime(user.getSignUpTime());
+    userRdo.setDescription(user.getDescription());
+    userRdo.setFollowers(user.getFollowers());
+    userRdo.setFollowing(user.getFollowing());
+    userRdo.setBookmarks(user.getBookmarks());
+    return userRdo;
   }
 
   @PostMapping("/find/bookmarks/query")
   public List<Board> findBookmarks(@RequestBody FindBookmarksQuery query) {
     String userId = query.getUserId();
-    User user = userService.findByUserId(userId);
+    User user = userService.findById(userId);
     List<String> userBookmarks = user.getBookmarks(); // 유저가 좋아요한 목룍
     if (userBookmarks == null) {
       return null;
@@ -56,7 +64,15 @@ public class UserSeekResource {
   @PostMapping("/find/user/query")
   public UserRdo findUser(@RequestBody FindUserQuery query) {
     String id = query.getId();
-    UserRdo userRdo = userService.findById(id);
+    User user = userService.findById(id);
+    UserRdo userRdo = new UserRdo();
+    userRdo.setId(user.getId());
+    userRdo.setUserEmail(user.getUserEmail());
+    userRdo.setUserName(user.getUserName());
+    userRdo.setDescription(user.getDescription());
+    userRdo.setFollowers(user.getFollowers());
+    userRdo.setFollowing(user.getFollowing());
+    userRdo.setBookmarks(user.getBookmarks());
     return userRdo;
   }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserRdo {
   private String id;
-  private String userId;
+  private String userEmail;
   private String userName;
   private String signUpTime;
   private String description;
