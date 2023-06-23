@@ -4,6 +4,6 @@ spring:
       host: localhost
       port: 27017
 #      authentication-database: admin
-      database: nx-board
+      database: memory_style
 #      username: nextree
 #      password: bizadmin
