@@ -1,1 +1,4 @@
 rootProject.name = 'memory_style'
+include 'memorystyle-aggregate'
+include 'memorystyle-boot'
+
